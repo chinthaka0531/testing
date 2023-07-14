@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 
 def get_boltzman_distribution(q):
     (nS, nA) = q.shape
