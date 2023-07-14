@@ -1,7 +1,9 @@
 import numpy as np
 import cv2
 
-def get_boltzman_distribution(q):
+def get_boltzman_distribution_121(q):
+    (nS, nA) = q.shape[0], q.shape[1]
+    (nS, nA) = q.shape
     (nS, nA) = q.shape
     bd = []
     for s in range(nS):
