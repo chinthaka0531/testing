@@ -1,9 +1,7 @@
 import numpy as np
 import cv2
 
-def get_boltzman_distribution_121(q):
-    (nS, nA) = q.shape[0], q.shape[1]
-    (nS, nA) = q.shape
+def get_boltzman_distribution_2(q):
     (nS, nA) = q.shape
     bd = []
     for s in range(nS):
@@ -74,7 +72,7 @@ def iavi(feature_matrix, transition_probabilities, action_probabilities, conf):
                 for a in range(nA):
                     q[i, a] = r[i, a] + np.sum(transition_probabilities[i][a] * gamma * np.max(q[np.arange(nS)], axis=1))
     
-    boltzman_distribution = get_boltzman_distribution(q)
+    boltzman_distribution = get_boltzman_distribution_2(q)
 
     return q, r_diff_list, boltzman_distribution
 
@@ -125,6 +123,6 @@ def iql(trajectories, conf):
                 q[s, a] = (1-alpha_q) * q[s, a] + alpha_q * (r[s, a] + gamma  * np.max(q[new_s])) 
                 s = new_s
         
-    boltzman_distribution = get_boltzman_distribution(q)
+    boltzman_distribution = get_boltzman_distribution_2(q)
     
     return q, r_diff_list, boltzman_distribution
